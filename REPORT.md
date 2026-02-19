@@ -65,7 +65,7 @@ sudo systemctl restart nginx
 ```
 
 ### Bukti
-<img src="assets/nginx-running.png" alt="Nginx proof" width="400">
+<img src="assets/nginx-running.png" alt="Nginx proof" width="90%">
 
 ## 2. Security Hardening
 
@@ -87,7 +87,7 @@ sudo ufw allow 443/tcp
 sudo ufw enable
 ```
 Output `sudo ufw status`:
-<img src="assets/ufw-status.png" alt="UFW proof" width="400">
+<img src="assets/ufw-status.png" alt="UFW proof" width="90%">
 
 ### User Creation
 Membuat user baru untuk akses SSH:
@@ -120,7 +120,7 @@ ssh-copy-id -p 6622 gagah-admin@10x.xxx.xxx.xx
 
 ### Bukti
 Tidak dapat login menggunakan password pada user `deploy`:
-<img src="assets/password-login.png" alt="Password Login proof" width="400">
+<img src="assets/password-login.png" alt="Password Login proof" width="90%">
 
 ## 3. Containerization
 Kontainerisasi aplikasi nginx dengan non-root container pada image alpine.
@@ -157,7 +157,7 @@ sudo docker run --detach --restart always --name app-test --publish 8080:8080 ap
 ```
 ### Bukti
 Berikut bukti akses ke port `8080` local:
-<img src="assets/curl.png" alt="Curl proof" width="400">
+<img src="assets/curl.png" alt="Curl proof" width="90%">
 
 ## 4. Automation
 Otomatisasi backup dan mengatur retention backup ke 7 hari.
@@ -193,14 +193,14 @@ Aplikasi di soal nomor 3 memiliki traffic yang tinggi, sehingga menyebabkan peng
 ### Solusi
 
 Berikut beberapa solusi rekomendasi yang dapat menangani kendala CPU 100% dan database yang pelan:
-1. Horizontal Scale
+#### 1. Horizontal Scale
 Untuk menangani penggunaan CPU yang tinggi, diperlukan server tambahan atau menambahkan server pada kluster.
 
 Proses upgrade tidak menimbulkan downtime yang signifikan sehingga lebih aman dan traffic tetap terjaga.
 
 Agar tidak menimbulkan downtime, dapat menggunakan teknik `load balancing` untuk mengatur traffic yang masuk ke server agar terdistribusi secara merata, dan memastikan ketersediaan atau `high availability` sehingga meminimalisir downtime.
 
-2. Database Scaling
+#### 2. Database Scaling
 Jika solusi nomor 1 tidak dapat mengatasi performa database, maka direkomendasikan untuk membuat server khusus untuk database, tentunya dengan `high availability`.
 
 Strategi yang digunakan yaitu `replication`, dimana terdapat beberapa server yang memiliki salinan database persis satu sama lain. Terdapat `primary` server untuk menangani operasi `write` dan `follower` untuk menangani operasi `read`.
