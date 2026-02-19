@@ -192,22 +192,22 @@ Aplikasi di soal nomor 3 memiliki traffic yang tinggi, sehingga menyebabkan peng
 
 ### Solusi
 
-Berikut beberapa solusi rekomendasi yang dapat menangani kendala CPU 100% dan database yang pelan:
-#### 1. Horizontal Scale
+Berikut beberapa solusi rekomendasi yang dapat menangani kendala CPU 100% dan performa database:
+#### 1. Application Horizontal Scaling
 Untuk menangani penggunaan CPU yang tinggi, diperlukan server tambahan atau menambahkan server pada kluster.
 
 Proses upgrade tidak menimbulkan downtime yang signifikan sehingga lebih aman dan traffic tetap terjaga.
 
 Agar tidak menimbulkan downtime, dapat menggunakan teknik `load balancing` untuk mengatur traffic yang masuk ke server agar terdistribusi secara merata, dan memastikan ketersediaan atau `high availability` sehingga meminimalisir downtime.
 
-#### 2. Database Scaling
+#### 2. Database Replication
 Jika solusi nomor 1 tidak dapat mengatasi performa database, maka direkomendasikan untuk membuat server khusus untuk database, tentunya dengan `high availability`.
 
 Strategi yang digunakan yaitu `replication`, dimana terdapat beberapa server yang memiliki salinan database persis satu sama lain. Terdapat `primary` server untuk menangani operasi `write` dan `follower` untuk menangani operasi `read`.
 
-Strategi `replication` juga membutuhkan `load balancing` agar traffic terdistribusi dan memastikan `high availability`.
+Strategi `replication` juga membutuhkan `load balancing` agar traffic terdistribusi dan memastikan `high availability`. Load balancing disini juga berfungsi untuk membagi atau split traffic untuk read dan write masing-masing.
 
-Solusi ini cukup kompleks namun akan lebih terjamin untuk masa yang akan mendatang jika server memerlukan tambahan resources lagi.
+Solusi ini cukup kompleks namun akan lebih terjamin untuk masa yang akan mendatang jika server memerlukan tambahan resources lagi, dan ketersediaan akan tetap terjamin selama proses upgrade tersebut.
 
 Berikut adalah diagram dasar arsitekturnya:
 <img src="assets/diagram.png" alt="Diagram" width="90%">
