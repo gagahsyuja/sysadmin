@@ -208,3 +208,6 @@ Strategi yang digunakan yaitu `replication`, dimana terdapat beberapa server yan
 Strategi `replication` juga membutuhkan `load balancing` agar traffic terdistribusi dan memastikan `high availability`.
 
 Solusi ini cukup kompleks namun akan lebih terjamin untuk masa yang akan mendatang jika server memerlukan tambahan resources lagi.
+
+Berikut adalah diagram dasar arsitekturnya:
+<img src="assets/diagram.png" alt="Diagram" width="90%">
