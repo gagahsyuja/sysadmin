@@ -65,6 +65,7 @@ sudo systemctl restart nginx
 ```
 
 ### Bukti
+
 <img src="assets/nginx-running.png" alt="Nginx proof" width="90%">
 
 ## 2. Security Hardening
@@ -87,6 +88,7 @@ sudo ufw allow 443/tcp
 sudo ufw enable
 ```
 Output `sudo ufw status`:
+
 <img src="assets/ufw-status.png" alt="UFW proof" width="90%">
 
 ### User Creation
@@ -120,6 +122,7 @@ ssh-copy-id -p 6622 gagah-admin@10x.xxx.xxx.xx
 
 ### Bukti
 Tidak dapat login menggunakan password pada user `deploy`:
+
 <img src="assets/password-login.png" alt="Password Login proof" width="90%">
 
 ## 3. Containerization
@@ -157,6 +160,7 @@ sudo docker run --detach --restart always --name app-test --publish 8080:8080 ap
 ```
 ### Bukti
 Berikut bukti akses ke port `8080` local:
+
 <img src="assets/curl.png" alt="Curl proof" width="90%">
 
 ## 4. Automation
@@ -210,4 +214,5 @@ Strategi `replication` juga membutuhkan `load balancing` agar traffic terdistrib
 Solusi ini cukup kompleks namun akan lebih terjamin untuk masa yang akan mendatang jika server memerlukan tambahan resources lagi, dan ketersediaan akan tetap terjamin selama proses upgrade tersebut.
 
 Berikut adalah diagram dasar arsitekturnya:
+
 <img src="assets/diagram.png" alt="Diagram" width="90%">
